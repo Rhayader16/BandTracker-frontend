@@ -9,6 +9,7 @@ export function useAuth() {
 function AuthContextWrapper({ children }) {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   function storeToken(token) {
@@ -21,6 +22,7 @@ function AuthContextWrapper({ children }) {
       //Here there's no token so the user isn't logged in
       setUser(null);
       setIsLoggedIn(false);
+      setIsAdmin(false);
       setIsLoading(false);
       return;
     }
@@ -34,7 +36,18 @@ function AuthContextWrapper({ children }) {
       //Here there's an error (expired or invalid token) and the user can't log in
       setUser(null);
       setIsLoggedIn(false);
+      isAdmin(false);
       setIsLoading(false);
+      console.log(error);
+    }
+  }
+
+  async function checkAdminStatus() {
+    try {
+      const response = await myApi.checkAdmin("/auth/verify"); // Sostituisci con l'endpoint appropriato
+      setIsAdmin(response.data.isAdmin);
+    } catch (error) {
+      setIsAdmin(false); // Se c'è un errore, l'utente non è un admin
       console.log(error);
     }
   }
@@ -58,6 +71,7 @@ function AuthContextWrapper({ children }) {
         user,
         isLoggedIn,
         isLoading,
+        isAdmin,
         authenticateUser,
         storeToken,
         logOutUser,
