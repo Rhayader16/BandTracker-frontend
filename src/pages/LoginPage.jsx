@@ -16,10 +16,11 @@ function LoginPage(props) {
     const requestBody = { email, password };
     myApi
       .post("/auth/login", requestBody)
-      .then((response) => {
+      .then(async (response) => {
         console.log("JWT token", response.data.authToken);
         storeToken(response.data.authToken);
-        authenticateUser();
+
+        await authenticateUser();
 
         navigate("/");
       })

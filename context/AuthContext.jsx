@@ -11,6 +11,10 @@ function AuthContextWrapper({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  function storeToken(token) {
+    localStorage.setItem("authToken", token);
+  }
+
   async function authenticateUser() {
     const storeToken = localStorage.getItem("authToken");
     if (!storeToken) {
@@ -21,8 +25,9 @@ function AuthContextWrapper({ children }) {
       return;
     }
     try {
-      const user = await myApi.getUserInfo(); //Here the token is valid and the user can login (changing of the state)
-      setUser(user);
+      const response = await myApi.getUserInfo(); //Here the token is valid and the user can login (changing of the state)
+      console.log(response);
+      setUser(response.data);
       setIsLoggedIn(true);
       setIsLoading(false);
     } catch (error) {
@@ -33,13 +38,30 @@ function AuthContextWrapper({ children }) {
       console.log(error);
     }
   }
+
+  const removeToken = () => {
+    localStorage.removeItem("authToken");
+  };
+
+  const logOutUser = () => {
+    removeToken();
+    authenticateUser();
+  };
+
   useEffect(() => {
     authenticateUser();
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, isLoggedIn, isLoading, authenticateUser }}
+      value={{
+        user,
+        isLoggedIn,
+        isLoading,
+        authenticateUser,
+        storeToken,
+        logOutUser,
+      }}
     >
       {children}
     </AuthContext.Provider>

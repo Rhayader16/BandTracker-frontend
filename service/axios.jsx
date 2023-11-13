@@ -4,12 +4,7 @@ const myApi = axios.create({ baseURL: "http://localhost:5005" });
 
 //Login
 myApi.getUserInfo = function () {
-  return myApi
-    .getUserInfo("/auth/verify")
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => console.log(error));
+  return myApi.get("/auth/verify");
 };
 
 //signup
