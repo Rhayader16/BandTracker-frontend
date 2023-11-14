@@ -34,6 +34,7 @@ function AuthContextWrapper({ children }) {
       setIsLoading(false);
     } catch (error) {
       //Here there's an error (expired or invalid token) and the user can't log in
+      removeToken();
       setUser(null);
       setIsLoggedIn(false);
       isAdmin(false);
@@ -44,7 +45,8 @@ function AuthContextWrapper({ children }) {
 
   async function checkAdminStatus() {
     try {
-      const response = await myApi.checkAdmin("/auth/verify"); // Sostituisci con l'endpoint appropriato
+      const response = await myApi.checkAdmin(); // Sostituisci con l'endpoint appropriato
+      console.log(response);
       setIsAdmin(response.data.isAdmin);
     } catch (error) {
       setIsAdmin(false); // Se c'è un errore, l'utente non è un admin

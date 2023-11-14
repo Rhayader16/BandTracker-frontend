@@ -36,7 +36,8 @@ function EditOneArtistPage() {
   useEffect(() => {
     getArtist();
   }, []);
-
+  console.log("test");
+  console.log(artist);
   if (!artist) return <p>Loading</p>;
 
   return (
@@ -45,7 +46,7 @@ function EditOneArtistPage() {
       <input
         type="text"
         placeholder="New Artist Name"
-        value={newArtistData.name || ""}
+        value={artist.oneArtist.name || ""}
         onChange={(e) =>
           setNewArtistData({ ...newArtistData, name: e.target.value })
         }
@@ -53,7 +54,7 @@ function EditOneArtistPage() {
       <input
         type="text"
         placeholder="Genre"
-        value={newArtistData.genre || ""}
+        value={artist.oneArtist.genre || ""}
         onChange={(e) =>
           setNewArtistData({ ...newArtistData, genre: e.target.value })
         }
@@ -61,20 +62,20 @@ function EditOneArtistPage() {
       <input
         type="date"
         placeholder="New Concert Date"
-        value={newArtistData.concertDate || ""}
+        value={artist.oneArtist.concertDate || ""}
         onChange={(e) =>
           setNewArtistData({ ...newArtistData, concertDate: e.target.value })
         }
       />
-      {/* console.log(typeof artist.album) */}
-      {artist.album.map((album, index) => (
-        <div key={index}>
+
+      {artist.oneArtist.album.map((album, index) => (
+        <div key={album._id}>
           <input
             type="text"
             placeholder={`Album ${index + 1} Name`}
             value={
-              newArtistData.album && newArtistData.album[index]
-                ? newArtistData.album[index].name || ""
+              artist.oneArtist.album && artist.oneArtist.album[index]
+                ? artist.oneArtist.album[index].name || ""
                 : ""
             }
             onChange={(e) =>
@@ -94,8 +95,8 @@ function EditOneArtistPage() {
             type="date"
             placeholder={`Album ${index + 1} Year`}
             value={
-              newArtistData.album && newArtistData.album[index]
-                ? newArtistData.album[index].year || ""
+              artist.oneArtist.album && artist.oneArtist.album[index]
+                ? artist.oneArtist.album[index].year || ""
                 : ""
             }
             onChange={(e) =>
@@ -115,8 +116,8 @@ function EditOneArtistPage() {
             type="text"
             placeholder={`Album ${index + 1} Picture`}
             value={
-              newArtistData.album && newArtistData.album[index]
-                ? newArtistData.album[index].picture || ""
+              artist.oneArtist.album && artist.oneArtist.album[index]
+                ? artist.oneArtist.album[index].picture || ""
                 : ""
             }
             onChange={(e) =>
@@ -137,7 +138,7 @@ function EditOneArtistPage() {
       <input
         type="text"
         placeholder="Photo"
-        value={newArtistData.photo || ""}
+        value={artist.oneArtist.photo || ""}
         onChange={(e) =>
           setNewArtistData({ ...newArtistData, photo: e.target.value })
         }

@@ -11,7 +11,8 @@ import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
-import EditOneArtistPage from "./pages/EditOneArtistPAge";
+import EditOneArtistPage from "./pages/EditOneArtistPage";
+import CreateArtistPage from "./pages/CreateArtistPage";
 
 function App() {
   return (
@@ -26,11 +27,13 @@ function App() {
             <Route path="/artist/:artistId" element={<OneArtistPage />} />
             {/* <Route path="/concert" element={<OneVenuePage />} /> */}
           </Route>
-          <Route element={<AdminRoute />} />
-          <Route
-            path="/artist/edit/:artistId"
-            element={<EditOneArtistPage />}
-          />
+          <Route element={<AdminRoute />}>
+            <Route
+              path="/artist/edit/:artistId"
+              element={<EditOneArtistPage />}
+            />
+            <Route path="/artist/create" element={<CreateArtistPage />} />
+          </Route>
           {/* This paths are available to the any user */}
           <Route element={<LoggedOutUser />}>
             <Route path="/signup" element={<SignupPage />} />

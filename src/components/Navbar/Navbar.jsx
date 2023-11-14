@@ -36,6 +36,11 @@ function Navbar() {
         <>
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>
+          {user && user.role === "admin" && (
+            <>
+              <Link to="/artist/create">Create Artist</Link>
+            </>
+          )}
         </>
       )}
       {!isLoggedIn && (
