@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import myApi from "../../service/axios";
 import { useAuth } from "../../context/AuthContext";
+import { Navigate, Link } from "react-router-dom";
 
 function OneArtistPage() {
   const [artist, setArtist] = useState(null);
@@ -19,8 +20,19 @@ function OneArtistPage() {
       .then((response) => {
         console.log(response);
         setArtist(response.data.oneArtist);
-        setVenues(response.data.allVenuesOfArtist);
+        // setVenues(response.data.allVenuesOfArtist);
         setAlbums(response.data.allAlbums);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const getVenues = () => {
+    myApi
+      .get(`/api/concerts/artist/${artistId}`)
+      .then((response) => {
+        console.log("venues");
+        console.log(response);
+        setVenues(response.data);
       })
       .catch((error) => console.log(error));
   };
@@ -45,14 +57,18 @@ function OneArtistPage() {
       .delete(`/api/albums/${id}`)
       .then(() => {
         getArtist();
-        // Navigate("/");
+        Navigate("/");
       })
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     getArtist();
+    getVenues();
   }, []);
+
+  console.log("venues");
+  console.log(venues);
 
   if (!artist) return <p>Loading</p>;
 
@@ -62,7 +78,7 @@ function OneArtistPage() {
         <h1 className="artist-name">{artist.name}</h1>
         <img src={artist.photo} alt={artist.name} />
         <p className="genre">{artist.genre}</p>
-        <p className="concert-dates">{artist.concertDate}</p>
+        {/* <p className="concert-dates">{artist.concertDate}</p> */}
         {user && user.role === "admin" && (
           <li>
             {/* <button onClick={handleForm}>Add an album</button> */}
@@ -110,6 +126,21 @@ function OneArtistPage() {
             </div>
           ))}
         </ul>
+        {/* display: flex,
+        flex-direction: column
+        align items: center
+        per concert-list */}
+        <div className="concerts-list">
+          {venues.map((concert) => (
+            //display flex, justify content: center per concert-card
+            <div key={concert._id} className="concert-card">
+              <Link to={`/oneVenuePage/${concert._id}`}>
+                <div>{concert.city}</div>
+              </Link>
+              <div>{concert.date}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

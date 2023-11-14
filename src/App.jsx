@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 // import AllVenuesPage from "./pages/AllVenuesPage";
 import Homepage from "./pages/HomePage";
 import OneArtistPage from "./pages/OneArtistPage";
-// import OneVenuePage from "./pages/OneVenuePage";
+import OneVenuePage from "./pages/OneVenuePage";
 import LoggedInUser from "./navigation/LoggedInUser";
 import LoggedOutUser from "./navigation/LoggedOutUser";
 import AdminRoute from "./navigation/AdminRoute";
@@ -25,7 +25,7 @@ function App() {
           <Route element={<LoggedInUser />}>
             {/* <Route path="/concerts" element={<AllVenuesPage />} /> */}
             <Route path="/artist/:artistId" element={<OneArtistPage />} />
-            {/* <Route path="/concert" element={<OneVenuePage />} /> */}
+            <Route path="/oneVenuePage/:venueId" element={<OneVenuePage />} />
           </Route>
           <Route element={<AdminRoute />}>
             <Route
