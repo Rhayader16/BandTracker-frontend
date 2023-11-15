@@ -1,22 +1,26 @@
 import React from "react";
 import { useEffect, useState } from "react";
-// import "../pages/ErrorPage.css";
 
 function ErrorPage() {
   const data = [
     {
-      picture: "./src/assets/FalloutErr.jpg",
-
-      message: "War. War never changes.",
-    },
-    { picture: "./src/assets/GLaDOSError.png", message: "The cake is a lie." },
-    {
-      picture: "./src/assets/MarioError.png",
-      message: "Thank you Mario! But our princess is in another castle!",
+      message: "How are things on the west coast?",
+      artist: "-Interpol-",
     },
     {
-      picture: "./src/assets/ZeldaError.png",
-      message: "It's dangerous to go alone! Take this",
+      message:
+        "Well what weighs more down on your plate, a ton of love? A ton of hate?",
+      artist: "-Editors-",
+    },
+    {
+      message:
+        "What could I have done to make this better besides not doing what it was I did to make it worse?",
+      artist: "-On an On-",
+    },
+    {
+      message:
+        "Who are you to me? Who am I supposed to be? Not exactly sure anymore",
+      artist: "-Queens of the Stone Age-",
     },
   ];
 
@@ -26,7 +30,7 @@ function ErrorPage() {
     const timer = setTimeout(() => {
       setShowPage(false);
       window.location.href = "/";
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);
@@ -34,17 +38,22 @@ function ErrorPage() {
   }, []);
 
   const index = Math.floor(Math.random() * data.length);
-  const pic = data[index].picture;
-  const mess = data[index].message;
+  const message = data[index].message;
+  const artist = data[index].artist;
 
   return (
     <>
       <div className="error-container">
         <div>
-          <p className="error-message">{mess}</p>
+          <p className="warning">
+            This is an error page, here's some questions for you:
+          </p>
         </div>
         <div>
-          <img className="error-image" src={pic} />
+          <p className="error-message">{message}</p>
+        </div>
+        <div>
+          <p className="error-text">{artist}</p>
         </div>
       </div>
     </>

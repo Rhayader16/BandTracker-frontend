@@ -12,7 +12,9 @@ function OneArtistPage() {
   const [year, setYear] = useState();
   const [picture, setPicture] = useState("");
   // const [editAlbum, setEditAlbum] = useState(null);
+  const [myFav, setMyFav] = useState(null);
   const [isfavourite, setIsFavourite] = useState(false);
+  const [userId, setUserId] = useState(null);
   let { artistId } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -32,8 +34,6 @@ function OneArtistPage() {
     myApi
       .get(`/api/concerts/artist/${artistId}`)
       .then((response) => {
-        console.log("venues");
-        console.log(response);
         setVenues(response.data);
       })
       .catch((error) => console.log(error));
@@ -54,12 +54,24 @@ function OneArtistPage() {
       .catch((error) => console.log(error));
   };
 
+  const getUserId = () => {
+    myApi
+      .get(`/auth/getUserId/`)
+      .then((response) => {
+        setUserId(response.data.userId);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  //come posso fare per implementare il comportamento on/off?
+
   const handleFavourite = (e) => {
     e.preventDefault();
     myApi
-      .post(`/api/favourites`, { artistId })
+      .post(`/api/favourites`, { user: userId, artist: artistId })
       .then((response) => {
         setIsFavourite(true);
+        setMyFav(response.data._id);
       })
       .catch((error) => console.log(error));
   };
@@ -76,6 +88,7 @@ function OneArtistPage() {
   useEffect(() => {
     getArtist();
     getVenues();
+    getUserId();
   }, []);
 
   // console.log("venues");
