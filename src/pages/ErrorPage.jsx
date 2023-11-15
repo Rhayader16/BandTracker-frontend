@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import "../pages/ErrorPage.css";
+// import "../pages/ErrorPage.css";
 
 function ErrorPage() {
   const data = [
