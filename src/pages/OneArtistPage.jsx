@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import myApi from "../../service/axios";
 import { useAuth } from "../../context/AuthContext";
-import { Navigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function OneArtistPage() {
   const [artist, setArtist] = useState(null);
@@ -11,8 +11,11 @@ function OneArtistPage() {
   const [name, setName] = useState("");
   const [year, setYear] = useState();
   const [picture, setPicture] = useState("");
+  // const [editAlbum, setEditAlbum] = useState(null);
+  const [isfavourite, setIsFavourite] = useState(false);
   let { artistId } = useParams();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const getArtist = () => {
     myApi
@@ -20,7 +23,6 @@ function OneArtistPage() {
       .then((response) => {
         console.log(response);
         setArtist(response.data.oneArtist);
-        // setVenues(response.data.allVenuesOfArtist);
         setAlbums(response.data.allAlbums);
       })
       .catch((error) => console.log(error));
@@ -52,12 +54,21 @@ function OneArtistPage() {
       .catch((error) => console.log(error));
   };
 
+  const handleFavourite = (e) => {
+    e.preventDefault();
+    myApi
+      .post(`/api/favourites`, { artistId })
+      .then((response) => {
+        setIsFavourite(true);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const handleDelete = (id) => {
     myApi
       .delete(`/api/albums/${id}`)
       .then(() => {
         getArtist();
-        Navigate("/");
       })
       .catch((error) => console.log(error));
   };
@@ -67,8 +78,8 @@ function OneArtistPage() {
     getVenues();
   }, []);
 
-  console.log("venues");
-  console.log(venues);
+  // console.log("venues");
+  // console.log(venues);
 
   if (!artist) return <p>Loading</p>;
 
@@ -78,10 +89,9 @@ function OneArtistPage() {
         <h1 className="artist-name">{artist.name}</h1>
         <img src={artist.photo} alt={artist.name} />
         <p className="genre">{artist.genre}</p>
-        {/* <p className="concert-dates">{artist.concertDate}</p> */}
+        <button onClick={handleFavourite}>Favourite</button>
         {user && user.role === "admin" && (
           <li>
-            {/* <button onClick={handleForm}>Add an album</button> */}
             <form onSubmit={handleAddAlbum}>
               <label htmlFor="name">Name: </label>
               <input
@@ -121,25 +131,31 @@ function OneArtistPage() {
                   <button onClick={() => handleDelete(album._id)}>
                     Delete
                   </button>
+                  <Link to={`/album/${album._id}/edit`}>Edit</Link>
                 </li>
               )}
             </div>
           ))}
         </ul>
+
         {/* display: flex,
         flex-direction: column
         align items: center
         per concert-list */}
         <div className="concerts-list">
-          {venues.map((concert) => (
-            //display flex, justify content: center per concert-card
-            <div key={concert._id} className="concert-card">
-              <Link to={`/oneVenuePage/${concert._id}`}>
-                <div>{concert.city}</div>
-              </Link>
-              <div>{concert.date}</div>
-            </div>
-          ))}
+          {venues ? (
+            venues.map((concert) => (
+              //display flex, justify content: center per concert-card
+              <div key={concert._id} className="concert-card">
+                <Link to={`/oneVenuePage/${concert._id}`}>
+                  <div>{concert.city}</div>
+                </Link>
+                <div>{concert.date}</div>
+              </div>
+            ))
+          ) : (
+            <p>No concert yey!</p>
+          )}
         </div>
       </div>
     </>

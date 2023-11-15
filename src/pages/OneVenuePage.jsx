@@ -5,8 +5,6 @@ import { useAuth } from "../../context/AuthContext";
 
 function OneVenuePage() {
   const [venue, setVenue] = useState(null);
-  const [artist, setArtist] = useState(null);
-  const [artistId, setArtistId] = useState(null);
   let { venueId } = useParams();
   const { user } = useAuth();
 
@@ -21,34 +19,20 @@ function OneVenuePage() {
 
   useEffect(() => {
     getVenue();
-  }, []); // Questo chiama getVenue al montaggio del componente
+  }, []);
 
-  useEffect(() => {
-    if (venue) {
-      let artistId = venue.artist;
-      setArtistId(artistId);
-      if (artistId) {
-        myApi
-          .get(`/api/artists/${artistId}`)
-          .then((response) => {
-            setArtist(response.data.oneArtist);
-          })
-          .catch((error) => console.log(error));
-      }
-    }
-  }, [venue]);
-
+  if (!venue) return <p>Loading</p>;
   console.log(venue);
   return (
     <div className="container">
       <ul className="venue-list">
-        <li>{artist && artist.name}</li>
-        <li>{venue && venue.city}</li>
-        <li>{venue && venue.venue}</li>
-        <li>{venue && venue.address}</li>
-        <li>{venue && venue.date}</li>
+        <li>{venue.artist.name}</li>
+        <li>{venue.city}</li>
+        <li>{venue.venue}</li>
+        <li>{venue.address}</li>
+        <li>{venue.date}</li>
         <li>
-          {venue && venue.coordinates[0]}, {venue && venue.coordinates[1]}
+          {venue.coordinates[0]}, {venue.coordinates[1]}
         </li>
       </ul>
     </div>

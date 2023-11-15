@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import myApi from "../../service/axios";
+import { useNavigate } from "react-router-dom";
 
 const allGenre = [
   "Rock",
@@ -18,11 +19,14 @@ function CreateArtistPage() {
   const [name, setName] = useState("");
   const [genre, setGenre] = useState("-1");
   const [photo, setPhoto] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const res = await myApi.post("/api/artists", { name, genre, photo });
       console.log(res);
+      navigate(`/`);
     } catch (error) {
       console.log(error);
     }
