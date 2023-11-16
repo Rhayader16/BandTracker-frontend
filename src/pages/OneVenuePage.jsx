@@ -37,14 +37,14 @@ function OneVenuePage() {
           <MapContainer
             center={[51.505, -0.09]}
             zoom={13}
-            scrollWheelZoom={true}
+            scrollWheelZoom={false}
             style={{ height: "200px", width: "200px" }}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={venue.coordinates[0][1]}>
+            <Marker position={[51.505, -0.09]}>
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
                 <img src="/vite.svg" alt="Vite vite" />
