@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const myApi = axios.create({ baseURL: "http://localhost:5005" });
+const myApi = axios.create({ baseURL: import.meta.env.VITE_BACKEND });
 
 //Login
 myApi.getUserInfo = function () {
