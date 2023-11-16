@@ -1,8 +1,16 @@
-# React + Vite
+# Band Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Band Tracker is a web application that provides information about concert dates and venues for various musical artists. With this app, users can explore upcoming concerts, view details about artists, and manage their favorite artists.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Concert Information:** Browse through upcoming concert dates for different artists.
+- **Artist Details:** View some information about your favorite artists (their genre and some of their albums).
+- **Favorite Artists:** Save your favorite artists to keep track of their upcoming concerts.
+
+## Technologies Used
+
+- **Frontend:** React.js
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT (JSON Web Token)
