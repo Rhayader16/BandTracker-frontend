@@ -5,17 +5,17 @@ import "../Navbar/Navbar.css";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = () => {
-    Navigate("/q?=" + searchQuery);
-  };
+  // const handleSearch = () => {
+  //   Navigate("/q?=" + searchQuery);
+  // };
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
+  // const handleKeyPress = (e) => {
+  //   if (e.key === "Enter") {
+  //     handleSearch();
+  //   }
+  // };
 
   return (
     <nav>
@@ -23,13 +23,13 @@ function Navbar() {
         <button>Home</button>
       </Link>
       <div>
-        <input
+        {/* <input
           type="text"
           placeholder="Search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={handleKeyPress}
-        />
+        /> */}
       </div>
 
       {isLoggedIn && (

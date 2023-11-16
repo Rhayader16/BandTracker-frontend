@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import myApi from "../../service/axios";
+import { Link } from "react-router-dom";
 
 const FavouritesPage = () => {
   const [favourites, setFavourites] = useState([]);
@@ -22,8 +23,11 @@ const FavouritesPage = () => {
       <h1>My Favourite Artists</h1>
       <ul>
         {favourites.map((favourite) => (
-          <li key={favourite._id}>
-            <p>Artist: {favourite.artist.name}</p>
+          <li key={favourite._id} className="artist-section">
+            <Link to={`/artist/${favourite.artist._id}`}>
+              <p>Artist: {favourite.artist.name}</p>
+              <img src={favourite.artist.photo} alt={favourite.artist.name} />
+            </Link>
           </li>
         ))}
       </ul>
