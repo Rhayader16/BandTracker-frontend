@@ -35,25 +35,22 @@ function OneVenuePage() {
         <li>{venue.date}</li>
         <li>
           <MapContainer
-            center={[51.505, -0.09]}
+            center={[venue.coordinates[0], venue.coordinates[1]]}
             zoom={13}
             scrollWheelZoom={false}
-            style={{ height: "200px", width: "200px" }}
+            style={{ height: "400px", width: "400px" }}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}>
+            <Marker position={[venue.coordinates[0], venue.coordinates[1]]}>
               <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-                <img src="/vite.svg" alt="Vite vite" />
-                <h1>Dat popup</h1>
+                <h2>Concert here: </h2>
+                <p>{venue.address}</p>
               </Popup>
             </Marker>
           </MapContainer>
-          console.log(venue)
-          {venue.coordinates[0]}, {venue.coordinates[1]}
         </li>
       </ul>
     </div>

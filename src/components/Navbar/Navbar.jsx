@@ -18,19 +18,19 @@ function Navbar() {
   // };
 
   return (
-    <nav>
+    <nav className="navbar">
       <Link to="/">
-        <button>Home</button>
+        <img src="http://www.danielemanzo.com/band-tracker/logo.png" alt="" />
       </Link>
-      <div>
-        {/* <input
+      {/* <div>
+        <input
           type="text"
           placeholder="Search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={handleKeyPress}
-        /> */}
-      </div>
+        />
+      </div> */}
 
       {isLoggedIn && (
         <>
