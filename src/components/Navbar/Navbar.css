@@ -91,8 +91,7 @@ html {
 }
 
 .navbar img {
-  width: 100%;
-  max-width: 14rem;
+  max-width: 320px;
   height: auto;
   max-height: 9vh;
   border-radius: 0.5rem;
@@ -116,4 +115,49 @@ html {
   margin-top: 4px;
   margin-left: 10px;
   outline: none;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.logo-container {
+  min-width: 320px;
+  padding-top: 5px;
+}
+
+.nav-menu {
+  width: calc(100% - 320px);
+}
+
+.menu-container > a {
+  margin: 0px 10px;
+}
+
+.menu-container > span {
+  margin: 0px 10px 0px 30px;
+}
+
+.logout-btn,
+.signup-btn,
+.login-btn {
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-left: 20px;
+  border: 0px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.logout-btn:hover,
+.signup-btn:hover,
+.login-btn:hover {
+  background-color: #df1401ff;
 }

@@ -1,10 +1,10 @@
+import "./App.css";
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import LoggedInUser from "./navigation/LoggedInUser";
 import LoggedOutUser from "./navigation/LoggedOutUser";
 import AdminRoute from "./navigation/AdminRoute";
 import Navbar from "./components/Navbar/Navbar";
-import "./App.css";
 import Homepage from "./pages/HomePage";
 import OneArtistPage from "./pages/OneArtistPage";
 import OneVenuePage from "./pages/OneVenuePage";

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;1,100;1,400&display=swap");
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -40,3 +42,160 @@
 .read-the-docs {
   color: #888;
 } */
+
+:root {
+  --jet: #333333;
+  --rose-quartz: #a2a0ab;
+  --seasalt: #fcfaf9;
+  --chili-red: #df1401;
+  --davys-gray: #5e5e5e;
+}
+/*jet: #333333ff;
+rose-quartz: #a2a0abff;
+seasalt: #fcfaf9ff;
+chili-red: #df1401ff;
+davys-gray: #5e5e5eff;*/
+
+body,
+html {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #5e5e5e;
+  max-width: 1280px;
+  height: 100vh;
+}
+
+ul,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+img {
+  box-sizing: border-box;
+}
+
+.main-title-1 {
+  color: #fcfaf9;
+  text-align: center;
+  font-size: 3.9rem;
+  padding: 0;
+  margin-top: 4rem;
+  margin-left: 3rem;
+}
+
+.artist-grid {
+  text-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  float: right;
+  margin-right: 2%;
+  max-width: calc(100vw - 14vw);
+  padding-bottom: 40px;
+}
+.artist-link p {
+  width: 14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.2rem;
+  color: #fcfaf9;
+}
+.artist-link img {
+  width: 100%;
+  max-width: 14rem;
+  height: auto;
+  max-height: 8rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.artist-link {
+  text-decoration: none;
+}
+.artist-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.artist-card:hover {
+  transform: scale(1.1);
+}
+
+/* Login Page */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  flex-direction: column;
+}
+
+.login-box {
+  width: 50%;
+  height: auto;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.input-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email-field {
+  margin-top: 20px;
+}
+
+.email-field > label {
+  display: block;
+}
+
+.password-field {
+  margin-top: 20px;
+}
+
+.password-field > label {
+  display: block;
+}
+
+.login-btn-form {
+  padding: 10px 15px;
+  border-radius: 80px;
+  margin-top: 30px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  border: 0;
+  transition: all 1s;
+}
+
+.login-btn-form:hover {
+  background-color: #df1401;
+}
+
+.divider {
+  height: 2px;
+  width: 80%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 20px;
+}

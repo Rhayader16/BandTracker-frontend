@@ -19,10 +19,16 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <Link to="/">
-        <img src="http://www.danielemanzo.com/band-tracker/logo.png" alt="" />
-      </Link>
-      {/* <div>
+      <div className="nav-container">
+        <div className="logo-container">
+          <Link to="/">
+            <img
+              src="http://www.danielemanzo.com/band-tracker/logo.png"
+              alt=""
+            />
+          </Link>
+        </div>
+        {/* <div>
         <input
           type="text"
           placeholder="Search"
@@ -31,29 +37,33 @@ function Navbar() {
           onKeyPress={handleKeyPress}
         />
       </div> */}
-
-      {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
-          <Link to="/favourites">Your Favourites</Link>
-          {user && user.role === "admin" && (
+        <div className="menu-container">
+          {isLoggedIn && (
             <>
-              <Link to="/artist/create">Create Artist</Link>
+              <span>{user && user.name}</span>
+              <Link to="/favourites">Your Favourites</Link>
+              {user && user.role === "admin" && (
+                <>
+                  <Link to="/artist/create">Create Artist</Link>
+                </>
+              )}
+              <button className="logout-btn" onClick={logOutUser}>
+                Logout
+              </button>
             </>
           )}
-        </>
-      )}
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            <button>Sign Up</button>
-          </Link>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-        </>
-      )}
+          {!isLoggedIn && (
+            <>
+              <Link to="/signup">
+                <button className="signup-btn">Sign Up</button>
+              </Link>
+              <Link to="/login">
+                <button className="login-btn">Login</button>
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
     </nav>
   );
 }

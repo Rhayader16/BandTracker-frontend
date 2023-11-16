@@ -19,9 +19,10 @@ function HomePage() {
 
   return (
     <div className="artist-grid">
+      <h1 className="main-title-1">Welcome to Band Tracker!</h1>
       {artists.map((artist, index) => (
         <div key={index} className="artist-card">
-          <Link to={`/artist/${artist._id}`}>
+          <Link to={`/artist/${artist._id}`} className="artist-link">
             <img src={artist.photo} alt={artist.name} />
             <p>{artist.name}</p>
           </Link>
