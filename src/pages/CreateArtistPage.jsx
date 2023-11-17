@@ -25,7 +25,6 @@ function CreateArtistPage() {
     event.preventDefault();
     try {
       const res = await myApi.post("/api/artists", { name, genre, photo });
-      console.log(res);
       navigate(`/`);
     } catch (error) {
       console.log(error);

@@ -17,7 +17,6 @@ function LoginPage(props) {
     myApi
       .post("/auth/login", requestBody)
       .then(async (response) => {
-        console.log("JWT token", response.data.authToken);
         storeToken(response.data.authToken);
 
         await authenticateUser();

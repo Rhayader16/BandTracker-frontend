@@ -45,11 +45,11 @@ function AuthContextWrapper({ children }) {
 
   async function checkAdminStatus() {
     try {
-      const response = await myApi.checkAdmin(); // Sostituisci con l'endpoint appropriato
+      const response = await myApi.checkAdmin();
       console.log(response);
       setIsAdmin(response.data.isAdmin);
     } catch (error) {
-      setIsAdmin(false); // Se c'è un errore, l'utente non è un admin
+      setIsAdmin(false); // If there's an error the user is not an admin
       console.log(error);
     }
   }

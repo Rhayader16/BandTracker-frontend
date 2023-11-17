@@ -1,5 +1,4 @@
 import "./App.css";
-import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import LoggedInUser from "./navigation/LoggedInUser";
 import LoggedOutUser from "./navigation/LoggedOutUser";

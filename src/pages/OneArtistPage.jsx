@@ -11,7 +11,6 @@ function OneArtistPage() {
   const [name, setName] = useState("");
   const [year, setYear] = useState();
   const [picture, setPicture] = useState("");
-  // const [editAlbum, setEditAlbum] = useState(null);
   const [myFav, setMyFav] = useState(null);
   const [isfavourite, setIsFavourite] = useState(false);
   const [userId, setUserId] = useState(null);
@@ -19,6 +18,7 @@ function OneArtistPage() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
+  //Here we get all the information about the artist (foto and albums)
   const getArtist = () => {
     myApi
       .get(`/api/artists/${artistId}`)
@@ -30,6 +30,7 @@ function OneArtistPage() {
       .catch((error) => console.log(error));
   };
 
+  //Here we get the dates and venues of concerts
   const getVenues = () => {
     myApi
       .get(`/api/concerts/artist/${artistId}`)
@@ -39,11 +40,12 @@ function OneArtistPage() {
       .catch((error) => console.log(error));
   };
 
+  //Here we can modify an album
   const handleAddAlbum = (e) => {
     e.preventDefault();
     myApi
       .post(`/api/albums/${artistId}`, { name, year, picture })
-
+      //Here we reset the input fields
       .then((response) => {
         console.log(response);
         setName("");
@@ -54,6 +56,7 @@ function OneArtistPage() {
       .catch((error) => console.log(error));
   };
 
+  //here we check if the user is logged in
   const getUserId = () => {
     myApi
       .get(`/auth/getUserId/`)
@@ -63,8 +66,7 @@ function OneArtistPage() {
       .catch((error) => console.log(error));
   };
 
-  //come posso fare per implementare il comportamento on/off?
-
+  //Here we add an artist to favourites
   const handleFavourite = (e) => {
     e.preventDefault();
     myApi
@@ -76,6 +78,7 @@ function OneArtistPage() {
       .catch((error) => console.log(error));
   };
 
+  //Here we delete an artist's album
   const handleDelete = (id) => {
     myApi
       .delete(`/api/albums/${id}`)
@@ -90,9 +93,6 @@ function OneArtistPage() {
     getVenues();
     getUserId();
   }, []);
-
-  // console.log("venues");
-  // console.log(venues);
 
   if (!artist) return <p>Loading</p>;
 

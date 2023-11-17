@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import myApi from "../../service/axios";
 import { useAuth } from "../../context/AuthContext";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -33,7 +33,6 @@ function OneVenuePage() {
         <div className="divider"></div>
         <div className="venue-venue">{venue.venue}</div>
         <div className="venue-address">{venue.address}</div>
-        {/* <div className="venue-date">{venue.date}</div> */}
         <div className="map-container">
           <MapContainer
             className="map"
@@ -48,6 +47,7 @@ function OneVenuePage() {
             />
             <Marker position={[venue.coordinates[0], venue.coordinates[1]]}>
               <Popup>
+                <img src="/vite.svg" alt="Vite vite" />
                 <h2>Your Concert is here: </h2>
                 <p>{venue.address}</p>
               </Popup>

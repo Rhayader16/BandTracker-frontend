@@ -18,7 +18,7 @@ function SignupPage(props) {
     e.preventDefault();
     const requestBody = { email, password, name };
     myApi
-      .post("/auth/signup", requestBody)
+      .post("/auth/signup", requestBody) //here we create the new user
       .then((response) => {
         navigate("/login");
       })

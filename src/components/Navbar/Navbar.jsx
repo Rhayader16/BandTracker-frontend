@@ -1,21 +1,10 @@
-import { Link, Navigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import "../Navbar/Navbar.css";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-  // const [searchQuery, setSearchQuery] = useState("");
-
-  // const handleSearch = () => {
-  //   Navigate("/q?=" + searchQuery);
-  // };
-
-  // const handleKeyPress = (e) => {
-  //   if (e.key === "Enter") {
-  //     handleSearch();
-  //   }
-  // };
 
   return (
     <div>
@@ -29,15 +18,6 @@ function Navbar() {
               />
             </Link>
           </div>
-          {/* <div>
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-      </div> */}
           <div className="menu-container">
             {isLoggedIn && (
               <>
