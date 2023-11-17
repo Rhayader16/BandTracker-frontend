@@ -37,8 +37,8 @@ function App() {
           <Route element={<LoggedOutUser />}>
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/*" element={<ErrorPage />} />
           </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </>

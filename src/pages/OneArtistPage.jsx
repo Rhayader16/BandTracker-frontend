@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import myApi from "../../service/axios";
-import { useAuth } from "../../context/AuthContext";
+import myApi from "../service/axios";
+import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 function OneArtistPage() {
@@ -184,16 +184,12 @@ function OneArtistPage() {
           ))}
         </div>
 
-        {/* display: flex,
-        flex-direction: column
-        align items: center
-        per concert-list */}
         <div className="divider"></div>
         <h2 className="subtitle">Next dates</h2>
         <div className="concerts-list">
           {venues ? (
             venues.map((concert) => {
-              // Converti la data nel formato desiderato (giorno-mese-anno)
+              // This converts the date in a more familiar format
               const formattedDate = new Date(concert.date).toLocaleDateString(
                 "it-IT",
                 {
@@ -204,7 +200,6 @@ function OneArtistPage() {
               );
 
               return (
-                //display flex, justify content: center per concert-card
                 <div key={concert._id} className="concert-card">
                   <div className="concert-date">{formattedDate}</div>
                   <Link

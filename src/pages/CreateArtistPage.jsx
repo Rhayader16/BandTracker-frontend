@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import myApi from "../../service/axios";
+import myApi from "../service/axios";
 import { useNavigate } from "react-router-dom";
 
 const allGenre = [

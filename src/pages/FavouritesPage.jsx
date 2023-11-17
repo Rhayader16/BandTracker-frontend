@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import myApi from "../../service/axios";
+import myApi from "../service/axios";
 import { Link } from "react-router-dom";
 
 const FavouritesPage = () => {

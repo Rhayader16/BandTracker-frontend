@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import myApi from "../../service/axios";
-import { useAuth } from "../../context/AuthContext";
+import myApi from "../service/axios";
+import { useAuth } from "../context/AuthContext";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import myApi from "../../service/axios";
+import myApi from "../service/axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function SignupPage(props) {
