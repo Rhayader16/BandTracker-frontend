@@ -47,7 +47,6 @@ function OneVenuePage() {
             />
             <Marker position={[venue.coordinates[0], venue.coordinates[1]]}>
               <Popup>
-                <img src="/vite.svg" alt="Vite vite" />
                 <h2>Your Concert is here: </h2>
                 <p>{venue.address}</p>
               </Popup>
