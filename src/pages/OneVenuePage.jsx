@@ -27,18 +27,20 @@ function OneVenuePage() {
   console.log(venue);
   return (
     <div className="container">
-      <ul className="venue-list">
-        <li>{venue.artist.name}</li>
-        <li>{venue.city}</li>
-        <li>{venue.venue}</li>
-        <li>{venue.address}</li>
-        <li>{venue.date}</li>
-        <li>
+      <div className="venue-list">
+        <div className="artist-name">{venue.artist.name}</div>
+        <div className="venue-city">{venue.city}</div>
+        <div className="divider"></div>
+        <div className="venue-venue">{venue.venue}</div>
+        <div className="venue-address">{venue.address}</div>
+        {/* <div className="venue-date">{venue.date}</div> */}
+        <div className="map-container">
           <MapContainer
+            className="map"
             center={[venue.coordinates[0], venue.coordinates[1]]}
             zoom={13}
             scrollWheelZoom={false}
-            style={{ height: "400px", width: "400px" }}
+            style={{ height: "400px", width: "70vw" }}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -46,13 +48,13 @@ function OneVenuePage() {
             />
             <Marker position={[venue.coordinates[0], venue.coordinates[1]]}>
               <Popup>
-                <h2>Concert here: </h2>
+                <h2>Your Concert is here: </h2>
                 <p>{venue.address}</p>
               </Popup>
             </Marker>
           </MapContainer>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 }

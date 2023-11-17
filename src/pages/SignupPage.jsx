@@ -6,7 +6,7 @@ function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [erroMessage, setErrorMessage] = useState(undefined);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
@@ -29,25 +29,51 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>SignupPage</h1>
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-        <label>Name</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-        <button type="submit">Sign Up</button>
-      </form>
-      {erroMessage && <p className="error-message">{errorMessage}</p>}
-      <p>Already have a account?</p>
-      <Link to={"/login"}>Login</Link>
+    <div className="signup-page">
+      <div className="login-box">
+        <h1>SignupPage</h1>
+        <div className="divider"></div>
+        <form onSubmit={handleSignupSubmit}>
+          <div className="input-data-container">
+            <div className="email-field">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+                placeholder="Email Address"
+              />
+            </div>
+            <div className="password-field">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+                placeholder="Insert a Password"
+              />
+            </div>
+            <div className="email-field">
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleName}
+                placeholder="Insert your name"
+              />
+            </div>
+          </div>
+          <button className="login-btn-form" type="submit">
+            Sign Up
+          </button>
+        </form>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <p>Already have a account?</p>
+        <Link to={"/login"}>Login</Link>
+      </div>
     </div>
   );
 }

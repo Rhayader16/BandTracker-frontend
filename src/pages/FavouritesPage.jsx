@@ -19,18 +19,31 @@ const FavouritesPage = () => {
   };
 
   return (
-    <div>
-      <h1>My Favourite Artists</h1>
-      <ul>
+    <div className="container">
+      <h1 className="title">My Favourite Artists</h1>
+      <div>
         {favourites.map((favourite) => (
-          <li key={favourite._id} className="artist-section">
-            <Link to={`/artist/${favourite.artist._id}`}>
-              <p>Artist: {favourite.artist.name}</p>
-              <img src={favourite.artist.photo} alt={favourite.artist.name} />
+          <div key={favourite._id} className="artist-section">
+            <Link
+              className="artist-link-fav"
+              to={`/artist/${favourite.artist._id}`}
+            >
+              <div className="artist-info">
+                <div className="artist-image-container">
+                  <img
+                    className="artist-photo"
+                    src={favourite.artist.photo}
+                    alt={favourite.artist.name}
+                  />
+                </div>
+                <div className="aname">
+                  <p>{favourite.artist.name}</p>
+                </div>
+              </div>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

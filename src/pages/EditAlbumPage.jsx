@@ -42,37 +42,49 @@ function EditAlbumPage() {
 
   return (
     <>
-      <div>{albumName}</div>
-      <form onSubmit={handleUpdate}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={albumName}
-            onChange={(e) => setAlbumName(e.target.value)}
-          />
+      <div className="container">
+        <div className="form-update">
+          <div className="title-medium">{albumName}</div>
+          <div className="divider"></div>
+          <div className="album-edit-form">
+            <form onSubmit={handleUpdate}>
+              <div className="album-edit-form-container">
+                <div className="mt2 width70">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={albumName}
+                    onChange={(e) => setAlbumName(e.target.value)}
+                  />
+                </div>
+                <div className="mt2 width70">
+                  <label htmlFor="year">Year</label>
+                  <input
+                    type="text"
+                    id="year"
+                    value={albumYear}
+                    onChange={(e) => setAlbumYear(e.target.value)}
+                  />
+                </div>
+                <div className="mt2 width70">
+                  <label htmlFor="picture">Picture</label>
+                  <input
+                    type="url"
+                    id="picture"
+                    value={albumPicture}
+                    onChange={(e) => setAlbumPicture(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="divider"></div>
+              <div className="button-container-update">
+                <button className="btn">Update Album</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
-          <label htmlFor="year">Year</label>
-          <input
-            type="text"
-            id="year"
-            value={albumYear}
-            onChange={(e) => setAlbumYear(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="picture">Picture</label>
-          <input
-            type="url"
-            id="picture"
-            value={albumPicture}
-            onChange={(e) => setAlbumPicture(e.target.value)}
-          />
-        </div>
-        <button>Update Album</button>
-      </form>
+      </div>
     </>
   );
 }

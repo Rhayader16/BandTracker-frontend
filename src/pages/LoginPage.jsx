@@ -34,7 +34,7 @@ function LoginPage(props) {
     <div className="login-page">
       <div className="login-box">
         <h1>Login</h1>
-
+        <div className="divider"></div>
         <form onSubmit={handleLoginSubmit}>
           <div className="input-data-container">
             <div className="email-field">
@@ -44,6 +44,7 @@ function LoginPage(props) {
                 name="email"
                 value={email}
                 onChange={handleEmail}
+                placeholder="Your email"
               />
             </div>
             <div className="password-field">
@@ -53,6 +54,7 @@ function LoginPage(props) {
                 name="password"
                 value={password}
                 onChange={handlePassword}
+                placeholder="Your password"
               />
             </div>
           </div>
