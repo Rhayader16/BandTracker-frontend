@@ -24,7 +24,6 @@ function OneVenuePage() {
   }, []);
 
   if (!venue) return <p>Loading</p>;
-  console.log(venue);
   return (
     <div className="container">
       <div className="venue-list">

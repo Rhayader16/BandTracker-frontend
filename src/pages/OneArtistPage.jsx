@@ -23,7 +23,6 @@ function OneArtistPage() {
     myApi
       .get(`/api/artists/${artistId}`)
       .then((response) => {
-        console.log(response);
         setArtist(response.data.oneArtist);
         setAlbums(response.data.allAlbums);
       })
@@ -47,7 +46,6 @@ function OneArtistPage() {
       .post(`/api/albums/${artistId}`, { name, year, picture })
       //Here we reset the input fields
       .then((response) => {
-        console.log(response);
         setName("");
         setYear("");
         setPicture("");
