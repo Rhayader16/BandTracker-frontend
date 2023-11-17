@@ -1,4 +1,4 @@
-body,
+/*body,
 html {
   margin: 0;
   padding: 0;
@@ -59,7 +59,7 @@ html {
   animation: bubble 0.4s ease;
   background-color: #e1ce7a;
   color: #fff;
-}
+}*/
 body,
 html {
   margin: 0;
@@ -93,7 +93,7 @@ html {
 .navbar img {
   max-width: 320px;
   height: auto;
-  max-height: 9vh;
+  max-height: 72px;
   border-radius: 0.5rem;
   object-fit: cover;
 }

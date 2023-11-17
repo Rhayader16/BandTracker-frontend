@@ -14,3 +14,7 @@ Band Tracker is a web application that provides information about concert dates 
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Authentication:** JWT (JSON Web Token)
+
+## Deployement
+
+You can find the deployed version on: https://bandtracker.netlify.app/
