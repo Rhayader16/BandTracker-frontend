@@ -10,6 +10,7 @@ function OneVenuePage() {
   let { venueId } = useParams();
   const { user } = useAuth();
 
+  //here we get the info of a specific concert
   const getVenue = () => {
     myApi
       .get(`/api/concerts/venue/${venueId}`)

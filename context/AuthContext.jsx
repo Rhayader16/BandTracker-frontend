@@ -28,7 +28,6 @@ function AuthContextWrapper({ children }) {
     }
     try {
       const response = await myApi.getUserInfo(); //Here the token is valid and the user can login (changing of the state)
-      console.log(response);
       setUser(response.data);
       setIsLoggedIn(true);
       setIsLoading(false);
